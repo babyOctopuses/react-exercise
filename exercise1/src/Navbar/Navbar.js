@@ -2,7 +2,17 @@ import React from 'react'
 
 function Navbar() {
   return (
-    <div>Navbar</div>
+    <nav className="navbar">
+        <h1>Jul's Blog</h1>
+        <div className='links'>
+            <a href="/">Home</a>
+            <a href="/create" style={{
+                color: "white",
+                backgroundColor: "#f1356d",
+                borderRadius: "8px"
+            }}> New Blog</a>
+        </div>
+    </nav>
   )
 }
 
