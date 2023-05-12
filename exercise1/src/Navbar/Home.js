@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
+import BlogList from '../BlogList';
 
  function Home() {
   
@@ -12,15 +13,7 @@ import { useState } from 'react';
     return (
     <div className='home'>
         <h2>Homepage</h2>
-        <div className='home'>
-            {blogs.map((blog)=>(
-                <div className="blog-preview" key={blog.id}>
-                    <h2>{blog.title}</h2>
-                    <p>by {blog.author}</p>
-                </div>
-            )
-            )}
-        </div>
+        <BlogList blogs={blogs} title="All Titles"/>
     </div>
   )
 }
