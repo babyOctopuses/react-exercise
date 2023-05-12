@@ -10,11 +10,14 @@ import BlogList from '../BlogList';
         {title:"Book 3", author: "mario", body:"body 3", id:3}
     ]);
 
+    const handleDelete =  (id)=>{
+        const newBlogs= blogs.filter(blog=>blog.id !== id);
+        setBlogs(newBlogs);
+    }
+
     return (
     <div className='home'>
-        <h2>Homepage</h2>
-        <BlogList blogs={blogs} title="All Titles"/>
-        <BlogList blogs={blogs.filter((blog)=>blog.author === "mario")} title="Mario's list"/>
+        <BlogList blogs={blogs} title="All Titles" handleDelete={handleDelete}/>
     </div>
   )
 }
