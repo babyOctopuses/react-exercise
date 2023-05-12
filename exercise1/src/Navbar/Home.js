@@ -6,7 +6,7 @@ import BlogList from '../BlogList';
     
     useEffect(()=>{
         console.log("Use effect");
-    })
+    },[])
 
     const [blogs, setBlogs]=useState([
         {title:"Book 1", author: "yoshi", body:"body 1", id:1},
