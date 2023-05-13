@@ -6,23 +6,33 @@ import BlogList from '../BlogList';
 
     const [blogs, setBlogs]=useState(null);
     const [isPending, setIsPending] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(()=>{
         setTimeout(()=>{
-            fetch("http://localhost:8000/blogs")
+            fetch("http://localhost:8000/blogss")
                 .then(res =>{
-            return res.json()
-            })
+                    if(!res.ok){
+                        throw Error("could not fetch data from the resource");
+                    }
+                    return res.json();
+                })
                 .then(data=>{
-                setBlogs(data);
-                setIsPending(false);
-            })
+                    setBlogs(data);
+                    setIsPending(false);
+                    setError(null);
+                })
+                .catch(err=>{
+                    setIsPending(false);
+                    setError(err.message);
+                })
         }, 1000) 
     },[])
 
 
     return (
     <div className='home'>
+        {Error && <div>{error}</div>}
         {isPending && <div>Loading...</div>}
         {blogs && <BlogList blogs={blogs} title="All Titles"/> }
     </div>
